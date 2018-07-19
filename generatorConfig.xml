@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="MySQL" targetRuntime="MyBatis3" defaultModelType="flat">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"></property>
+            <property name="suppressDate" value="true"></property>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/dev?useUnicode=true&amp;characterEncoding=utf8"
+                        userId="dev"
+                        password="dev">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="model" targetProject="output">
+            <property name="enableSubPackages" value="false"></property>
+            <property name="trimStrings" value="true"></property>
+        </javaModelGenerator>
+
+
+        <sqlMapGenerator targetPackage="sqlMapper" targetProject="output">
+            <property name="enableSubPackages" value="false"></property>
+        </sqlMapGenerator>
+
+	<javaClientGenerator targetPackage="mapper" targetProject="output" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false"/>
+            <property name="rootInterface" value="BaseMapper"/>
+        </javaClientGenerator>
+        
+
+        <table tableName="sys_user" schema="dev" domainObjectName="User">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
